@@ -1,15 +1,39 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div *ngIf="identity"  class="col-md-1 col-lg-1">
-  <p>
-    Welcome to angular {{identity.name}}!
-  </p>
-  <p>
-    <a (click)="logOut()" class="btn btn-primary">Cerrar sesión</a>
-  </p>
+<div *ngIf="identity"  class="navigation col-md-1 col-lg-1">
+  <h1 class="head-title">
+    <a [routerLink]="['/']" >
+      <span class="glyphicon glyphicon-music"></span>
+      {{title}}
+    </a>
+  </h1>
+  <nav id="navigation">
+    <a href="#"> <span class="glyphicon glyphicon-search"></span>Buscar</a>
+    <a [routerLink]="['/artistas', 1]" [routerLinkActive]="['actived']"><span class="glyphicon glyphicon-star"></span>
+      Artist</a>
+    <a [routerLinkActive]="['actived']" ><span class="glyphicon glyphicon-book"></span>
+      Albums</a>
+  </nav>
+  <nav id="user_loggued">
+    <div class="user-image">
+      <img id="image-logged" src="{{url + 'get-image-user/' +identity.image}}" alt="" >
+    </div>
+    <span id="identity_name">
+      {{identity.name}}!
+    </span>
+    <a [routerLink]="['mis-datos']" [routerLinkActive]="['actived']">
+      <span class="glyphicon glyphicon-cog"></span>
+      <span>mis datos</span>
+    </a>
+    <a (click)="logOut()" class="btn-loggout">
+      <span class="glyphicon glyphicon-log-out"></span>
+      <span>Salir</span>
+    </a>
+  </nav>
 </div>
-<div class="clearfix"></div>
-<div *ngIf="identity" class="col-md-11  col-lg-11">
-  <h2>Estas loggueado en la app</h2>
+<div *ngIf="identity" class="col-md-11  col-lg-11'">
+  <router-outlet></router-outlet>
+  <div class="clearfix"></div>
+  <app-player class="player"></app-player>
 </div>
 <div class="container" *ngIf="!identity">
   <div class="row">
@@ -21,7 +45,6 @@
             {{errorMessage}}
           </div>
         </div>
-
 
         <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="col-sm-10">
           <div class="form-group">

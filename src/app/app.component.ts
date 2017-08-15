@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { User } from './models/user';
-import {UserService} from './services/user.service';
+import { UserService } from './services/user.service';
+import { GLOBAL } from './services/global';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -16,10 +18,16 @@ export class AppComponent implements OnInit {
   public token;
   public errorMessage;
   public alertRegister;
+  public url: string;
 
-  constructor(public _userService: UserService) {
+  constructor(
+    public _userService: UserService,
+    private _route: ActivatedRoute,
+    private _router:  Router
+  ) {
     this.user = new User('', '', '', '', '', 'ROLE_USER', 'null');
     this.user_register = new User('', '', '', '', '', 'ROLE_USER', 'null');
+    this.url = GLOBAL.url;
   }
 
   ngOnInit() {
@@ -45,9 +53,11 @@ export class AppComponent implements OnInit {
           // conseguir el token para enviarselo a cada peticion http
           this._userService.signUp(this.user,'true' ).subscribe(
             response => {
+
               let token = response.token;
+              console.log(token);
               this.token = token;
-              if (this.token <= 0){
+              if (this.token <= 0) {
                 alert('el token no se ha generado');
               }else {
                 // crear una sesion en tener el token definido
@@ -71,7 +81,7 @@ export class AppComponent implements OnInit {
 
       },
       error => {
-        let errorMessage = <any>error;
+        let errorMessage  = <any>error;
         if (errorMessage != null) {
           const body = JSON.parse(error._body)
           console.log(body.message);
@@ -108,10 +118,12 @@ export class AppComponent implements OnInit {
   }
 
   logOut() {
+
     localStorage.removeItem('identity');
     localStorage.removeItem('token');
     this.identity = null;
     this.token = null;
+    this._router.navigate(['/']);
   }
 
 

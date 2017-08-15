@@ -1,0 +1,37 @@
+<div class="col-sm-6">
+  <div class="head-page">
+    <h1>{{title}}</h1>
+    <div *ngIf="errorMessage" >
+      <div class="alert alert-success" role="alert">
+        {{errorMessage}}
+      </div>
+    </div>
+    <form #addArtistForm="ngForm" (ngSubmit)="onSubmit()" >
+      <p>
+        <label for="name">Nombre</label>
+        <input type="text" name="name" #name="ngModel" [(ngModel)]="artist.name" placeholder="Nombre del artista" required class="form-control">
+        <span *ngIf="!name.valid && name.touched">
+          Este campo es obligatorio
+        </span>
+      </p>
+      <p>
+        <label for="description">Description</label>
+        <input type="text" name="description" #description="ngModel" [(ngModel)]="artist.description" placeholder="description del artista" class="form-control" required >
+        <span *ngIf="!description.valid && description.touched">
+          Este campo es obligatorio
+        </span>
+      </p>
+      <div *ngIf="is_edit">
+        <div class="artist_image_for_edit" *ngIf="artist.image && artist.image != 'null'">
+          <img src="{{url + 'get-image-artist/' + artist.image }}" alt="" />
+        </div>
+      </div>
+      <p>
+        <label for="file">Sube la imagen del artista</label>
+        <input type="file" placeholder="Subur foto..." (change)="fileChangeEvent($event)">
+      </p>
+
+      <input type="submit" value="Crear artista" class="btn btn-success" [disabled]="!addArtistForm.form.valid">
+    </form>
+  </div>
+</div>

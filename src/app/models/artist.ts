@@ -1,8 +1,9 @@
 export class Artist {
   constructor(
-    public name: String,
-    public description: String,
-    public image: String,
+    public _id: string,
+    public name: string,
+    public description: string,
+    public image: string,
   ){}
 
 

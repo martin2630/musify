@@ -1,1 +1,200 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* GLOBAL */
+html, body{
+  background-color:#eee;
+  height:100%;
+  margin:0px;
+}
+.central{
+  height:100%;
+  overflow-y: scroll;
+}
+.seguro{
+  margin-top: -34px;
+  height:40px;
+  background: #222326;
+  position:absolute;
+}
+.seguro-song{
+  position:absolute;
+  right:10px;
+  margin-top:-38px;
+  background: #eee;
+
+}
+
+/* BARRA LATERAL */
+
+.navigation{
+  text-align: center;
+  color:#fff;
+  background: #1C1C1F;
+  height:100%;
+}
+.navigation a{
+  color: #ddd;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: block;
+  text-decoration: none;
+}
+.navigation a:hover{color:white;}
+.navigation .glyphicon{
+  font-size:25px;
+  display:block;
+  width:100%;
+}
+.head-title{
+  font-size: 20px!important;
+  font-weight:bold;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  display:block;
+}
+#user_loggued{
+  background: #1C1C1F;
+  position: absolute;
+  bottom: 0;
+  left:0;
+  border-top: 1px solid #444;
+  text-aling:center;
+  width: 75%;
+}
+.btn-loggout{
+  cursor: pointer;
+}
+#user_loggued .user-image{
+  background: #eee;
+  border-radius: 100px;
+  height:57px;
+  width: 57px;
+  margin:0 auto;
+  margin-top: 15px;
+  overflow: hidden;
+}
+#user_loggued .user-image img{
+  width:57px;
+}
+.actived{border-bottom:4px solid #84BD00;padding-bottom:4px;
+}
+
+/* ARTISTAS Y ALBUMS */
+
+.artist_image_for_edit{
+  width:150px;
+}
+
+.artist-list, .albums-list{
+  margin:0px;
+  padding: 0px;
+  margin-top:30px;
+  text-decoration: none;
+  list-style:none;
+  list-style-type: none;
+  min-height:800px;
+  padding-bottom:140px;
+}
+.artist-item, .album-item{
+  width:23%;
+  padding:0px;
+  margin:0px;
+  height:340px;
+  border: 1px solid #444;
+  margin-left:20px;
+  background: #000;
+  list-style-type: none;
+}
+.artist-item .artist-image img, .album-item .album-image img{
+  height:200px;
+  width: 100%;
+  overflow: hidden;
+  min-width:100%;
+}
+.artist-item .artist-name, .album-item .album-name{
+  color:#fff;
+  padding:10px;
+  background:#222326;
+}
+.artist-item .artist-name a, .album-item .album-name a{
+  color: #fff;
+}
+#artist-head-card .image, #album-head-card .image{
+  width:150px;
+  height:150px;
+  overflow: hidden;
+  float: left;
+  margin-right:30px;
+}
+#artist-head-card .image img, #album-head-card .image img{
+  height:170px;
+}
+
+/* ALBUMS */
+.album_image_for_edit img{
+  width:100%;
+}
+.artist-item, .album-item{
+  height:300px;
+  margin-bottom:30px;
+}
+.album-item{height:300px;}
+
+
+/* CANCIONES */
+.songs-list{
+  margin:0px;
+  padding:0px;
+  min-height:800px;
+  padding-bottom: 200px;
+}
+.song-item{
+  list-style: none;
+  border-bottom: 1px solid #ccc;
+  padding-top: 10px;
+
+}
+.song-item .buttons{
+  float:right;
+
+}
+.song-item .title{
+  padding:3px;
+}
+.song-item .btn-success{
+  margin-right:10px;
+}
+
+/* PLAYER */
+.player{
+  background: #1C1C1F;
+  position: fixed;
+  width:90.5%;
+  bottom:0;
+  padding:20px;
+  margin-left:-15px;
+  border-left:1px solid #444;
+  color:#fff;
+}
+.player .album-image {
+  float: left;
+  width: 138px;
+  height: 105px;
+  overflow: hidden;
+}
+
+.player .album-image img{
+  height:100%;
+}
+
+.player .audio-file{
+  width:85%;
+  height:40px;
+  margin-top:7px;
+  margin-left: 24px;
+  float:left;
+}
+.player audio{
+  width:100%;
+  height:40px;
+}
